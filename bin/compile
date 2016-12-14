@@ -10,6 +10,8 @@ echo "ls current dir"
 ls -la
 echo "ls /app/.heroku/vendor/"
 ls -la /app/.heroku/vendor/
+echo "ls ../"
+ls -la ../
 
 echo "-----> Found a .vendor_urls file"
 
