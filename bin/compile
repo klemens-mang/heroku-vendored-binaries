@@ -6,6 +6,11 @@ indent() {
 }
 
 echo "vendorbinaries pwd " $PWD
+echo "ls current dir"
+ls -la
+echo "ls /app/.heroku/vendor/"
+ls -la /app/.heroku/vendor/
+
 echo "-----> Found a .vendor_urls file"
 
 # Bail early but noisily
