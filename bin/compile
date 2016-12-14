@@ -35,7 +35,6 @@ while read url; do
     fi
 
     echo "extract to "
-    echo $VENDOR_PATH
-    curl -L --silent $url | tar x $flag -C "$(echo "$VENDOR_PATH")"
+    curl -L --silent $url | tar x $flag -C /app/
   fi
 done < .vendor_urls
