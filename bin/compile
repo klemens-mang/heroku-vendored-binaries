@@ -36,5 +36,10 @@ while read url; do
 
     echo "extract to "
     curl -L --silent $url | tar x $flag -C /app/
+    echo "print dirs"
+    ls -la /app/.heroku
+    ls -la /app/.heroku/vendor
+    ls -la /app/.heroku/vendor/lib
+    ls -la /app/.heroku/vendor/include/rocksdb
   fi
 done < .vendor_urls
