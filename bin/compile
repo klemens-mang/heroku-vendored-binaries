@@ -27,10 +27,10 @@ while read url; do
     fi
 
     curl -L --silent $url | tar x $flag -C /app/
-    export LIBRARY_PATH=/app/.heroku/vendor/lib
-    export LD_LIBRARY_PATH=/app/.heroku/vendor/lib
-    export INCLUDE_PATH=/app/.heroku/vendor/include
-    export C_INCLUDE_PATH=/app/.heroku/vendor/include
-    export CPLUS_INCLUDE_PATH=/app/.heroku/vendor/include
+    export LIBRARY_PATH=/app/.heroku/vendor/lib && echo "export LIBRARY_PATH=$LIBRARY_PATH" >> ~/.bashrc
+    export LD_LIBRARY_PATH=/app/.heroku/vendor/lib && echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> ~/.bashrc
+    export INCLUDE_PATH=/app/.heroku/vendor/include && echo "export INCLUDE_PATH=$INCLUDE_PATH" >> ~/.bashrc
+    export C_INCLUDE_PATH=/app/.heroku/vendor/include && echo "export C_INCLUDE_PATH=$C_INCLUDE_PATH" >> ~/.bashrc
+    export CPLUS_INCLUDE_PATH=/app/.heroku/vendor/include && echo "export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH" >> ~/.bashrc
   fi
 done < .vendor_urls
