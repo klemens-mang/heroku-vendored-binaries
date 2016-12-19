@@ -5,14 +5,6 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "vendorbinaries pwd " $PWD
-echo "ls current dir"
-ls -la
-echo "ls /app/.heroku/vendor/"
-ls -la /app/.heroku/vendor/
-echo "ls ../"
-ls -la ../
-
 echo "-----> Found a .vendor_urls file"
 
 # Bail early but noisily
@@ -34,12 +26,11 @@ while read url; do
     elif [ "$extension" == "tar" ]; then flag=""  # no compression
     fi
 
-    echo "extract to "
     curl -L --silent $url | tar x $flag -C /app/
-    echo "print dirs"
-    ls -la /app/.heroku
-    ls -la /app/.heroku/vendor
-    ls -la /app/.heroku/vendor/lib
-    ls -la /app/.heroku/vendor/include/rocksdb
+    export LIBRARY_PATH=/app/.heroku/vendor/lib
+    export LD_LIBRARY_PATH=/app/.heroku/vendor/lib
+    export INCLUDE_PATH=/app/.heroku/vendor/include
+    export C_INCLUDE_PATH=/app/.heroku/vendor/include
+    export CPLUS_INCLUDE_PATH=/app/.heroku/vendor/include
   fi
 done < .vendor_urls
