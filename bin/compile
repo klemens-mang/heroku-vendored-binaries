@@ -27,15 +27,5 @@ while read url; do
     fi
 
     curl -L --silent $url | tar x $flag -C $1
-
-    # Add build environment variables for ruby compilation step
-    export LIBRARY_PATH=$1/.heroku/vendor/lib
-    export LD_LIBRARY_PATH=$1/.heroku/vendor/lib
-    export INCLUDE_PATH=$1/.heroku/vendor/include
-    export C_INCLUDE_PATH=$1/.heroku/vendor/include
-    export CPLUS_INCLUDE_PATH=$1/.heroku/vendor/include
-
-    echo "this dir path $1"
-    ls -la $1/.heroku/vendor/lib
   fi
 done < .vendor_urls
